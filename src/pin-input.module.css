@@ -1,0 +1,21 @@
+.blockPin {
+    width: 35px;
+    height: 35px;
+    border: 2px solid;
+    font-size: 16px;
+    text-align: center;
+    margin: 8px;
+    transition: all ease-in 0.1s ;
+}
+
+.blockPinFalse {
+    background-color: lightcoral;
+}
+
+.blockPinCorrect {
+    background-color: lightgreen;
+}
+
+.mt3 {
+    margin-top: 6px;
+}
