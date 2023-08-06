@@ -39,3 +39,15 @@
 .read-the-docs {
   color: #888;
 }
+
+body {
+  background-color: black;
+}
+
+.hover-pls {
+  cursor: pointer;
+}
+
+.svg-icon g,path,rect,linearGradient,stop {
+  transition: 0.3s ease all;
+}

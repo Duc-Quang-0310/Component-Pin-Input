@@ -22,6 +22,7 @@ interface Props extends HTMLAttributes<HTMLInputElement> {
   pinLength?: number;
   setPinValue: Dispatch<SetStateAction<Array<PinType>>>;
   onSuccess?: () => void;
+  pinValue: Array<PinType>;
 }
 
 const BACKSPACE = "Backspace";
@@ -31,10 +32,11 @@ const PinInput: FC<Props> = ({
   regexPattern = /^[0-9]\d*$/,
   setPinValue,
   onSuccess,
+  pinValue = [],
   ...other
 }) => {
   const id = useId();
-  const [currentPin, setCurrentPin] = useState<Array<PinType>>([]);
+  const [currentPin, setCurrentPin] = useState<Array<PinType>>(pinValue);
   const inputRefs = useRef<HTMLInputElement[]>([]);
   const [errorList, setErrorList] = useState<Array<boolean | undefined>>([]);
   const [isInPasswordMode, setisInPasswordMode] = useState(true);
@@ -128,6 +130,12 @@ const PinInput: FC<Props> = ({
 
     return styles.blockPinFalse;
   }, []);
+
+  useEffect(() => {
+    if (pinValue.length > 0) {
+      setCurrentPin(pinValue);
+    }
+  }, [pinValue]);
 
   useEffect(() => {
     changeFocusPin(0);
